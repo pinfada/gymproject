@@ -1,0 +1,4 @@
+- name: setup-rails
+  # You may pin to the exact commit or the version.
+  # uses: andyw8/setup-rails@eec3e0d054ee818c43c8d1e4921e6284481b4dfd
+  uses: andyw8/setup-rails@v1
