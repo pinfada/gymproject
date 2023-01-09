@@ -1,0 +1,45 @@
+<!-- component -->
+<body class="font-mono bg-gray-400">
+  <!-- Container -->
+  <div class="container mx-auto">
+    <div class="flex justify-center px-6 my-12">
+      <!-- Row -->
+      <div class="w-full xl:w-3/4 lg:w-11/12 flex">
+        <!-- Col -->
+        <div
+          class="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
+          style="background-image: url('https://source.unsplash.com/Mv9hjnEUHR4/600x800')"
+        ></div>
+        <!-- Col -->
+        <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
+          <h3 class="pt-4 text-2xl text-center">Change your password</h3>
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <%= f.hidden_field :reset_password_token %>
+
+            <div class="field">
+              <%= f.label :password, "New password" %><br />
+              <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+              <% end %>
+              <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class:"w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :password_confirmation, "Confirm new password" %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" %>
+            </div>
+
+            <div class="actions mb-6 text-center">
+              <%= f.submit "Change my password", class: "w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline" %>
+            </div>
+            <hr class="mb-6 border-t" />
+            <div class="text-center">
+              <%= render "devise/shared/links" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

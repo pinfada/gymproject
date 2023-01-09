@@ -1,0 +1,61 @@
+<div class="bg-gray-50" data-controller="stripe-elements">
+  <div class="max-w-2xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <h2 class="sr-only">Checkout</h2>
+
+    <div class="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
+      <div class="mt-10 lg:mt-0">
+        <!-- Payment -->
+        <h2 class="text-lg font-medium text-gray-900">Payment</h2>
+        <%= form_with url: reservation_payments_path do |f| %>
+          <%= f.hidden_field :gymhouse_id, value: @gymhouse.id %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :checkin_date, value: @checkin_date %>
+          <%= f.hidden_field :checkout_date, value: @checkout_date %>
+          <%= f.hidden_field :subtotal, value: @subtotal %>
+          <%= f.hidden_field :service_fee, value: @service_fee %>
+          <%= f.hidden_field :total, value: @total %>
+        
+          <%= f.number_field :number, class: "form-control border rounded-tl rounded-tr border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600", value: '4242424242424242' %>
+          <div class="flex-row flex">
+              <%= f.number_field :exp_month, class: "form-control border rounded-br border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600", value: '12', placeholder: "Expired month" %>
+              <%= f.number_field :exp_year, class: "form-control border rounded-br border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600", value: '2023', placeholder: "Expired year" %>
+              <%= f.number_field :cvc, class: "form-control border rounded-br border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600", value: '314', placeholder: "CVC" %>
+          </div>
+          <%= f.submit "Pay with this card", class: "mt-8 border border-transparent hover:border-gray-300 dark:bg-white dark:hover:bg-gray-900 dark:text-gray-900 dark:hover:text-white dark:border-transparent bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 rounded w-full" %>
+        <% end %>
+      </div>
+
+      <!-- Reservation Details -->
+      <div class="mt-10 lg:mt-0">
+        <h2 class="text-lg font-medium text-gray-900">Your Reservation</h2>
+
+        <div class="mt-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+          <h3 class="sr-only">Items in your cart</h3>
+
+          <dl class="border-t border-gray-200 py-6 px-4 space-y-6 sm:px-6">
+            <div class="flex items-center justify-between">
+              <dt class="text-sm">Check in</dt>
+              <dd class="text-sm font-medium text-gray-900"><%= @checkin_date %></dd>
+            </div>
+            <div class="flex items-center justify-between">
+              <dt class="text-sm">Check out</dt>
+              <dd class="text-sm font-medium text-gray-900"><%= @checkout_date %></dd>
+            </div>
+            <div class="flex items-center justify-between">
+              <dt class="text-sm"><%= humanized_money_with_symbol(@gymhouse.price) %> x <%= Date.strptime(@checkout_date, Date::DATE_FORMATS[:us_short_date]).mjd - Date.strptime(@checkin_date, Date::DATE_FORMATS[:us_short_date]).mjd %> séances</dt>
+              <dd class="text-sm font-medium text-gray-900"><%= @subtotal %> €</dd>
+            </div>
+            <div class="flex items-center justify-between">
+              <dt class="text-sm">Service fee</dt>
+              <dd class="text-sm font-medium text-gray-900"><%= @service_fee %> €</dd>
+            </div>
+            <div class="flex items-center justify-between border-t border-gray-200 pt-6">
+              <dt class="text-base font-medium">Total</dt>
+              <dd class="text-base font-medium text-gray-900"><%= @total %> €</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<div 
+  class="bg-white"
+  data-controller="gymhouse"
+>
+  <div class="pt-6">
+    <div class="max-w-2xl mx-auto px-4 flex items-center space-x-2 sm:px-6 lg:max-w-7xl lg:px-8 mb-2">
+      <h1 class="font-semibold text-4xl"><%= @gymhouse.name %></h1>
+    </div>
+
+    <div class="max-w-2xl mx-auto px-4 flex justify-between items-center space-x-2 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div>
+        <span><%= @gymhouse.city %>, <%= @gymhouse.state %> <%= @gymhouse.country %></span>
+      </div>
+
+      <div>
+        <%= link_to "", data: { controller: "share", action: "share#share" }, class: "mr-4" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block relative" style="bottom: 1px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
+          <span>Share</span>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Image gallery -->
+    <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:max-w-7xl lg:px-8">
+       <%= image_tag @gymhouse.avatar, class: "w-full h-full object-center object-cover", width: 300 %>
+    </div>
+    <%= render "product_info" %>
+  </div>
+</div>
+
+
+<!-- test -->
+<div class="bg-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto py-16 sm:py-24 lg:py-32 lg:max-w-none">
+      <h2 class="text-2xl font-extrabold text-gray-900">Collections</h2>
+
+      <div class="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
+        <div class="group relative">
+          <div class="relative w-full h-80 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+            <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg" alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug." class="w-full h-full object-center object-cover">
+          </div>
+          <h3 class="mt-6 text-sm text-gray-500">
+            <a href="#">
+              <span class="absolute inset-0"></span>
+              Desk and Office
+            </a>
+          </h3>
+          <p class="text-base font-semibold text-gray-900">Work from home accessories</p>
+        </div>
+
+        <div class="group relative">
+          <div class="relative w-full h-80 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+            <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg" alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant." class="w-full h-full object-center object-cover">
+          </div>
+          <h3 class="mt-6 text-sm text-gray-500">
+            <a href="#">
+              <span class="absolute inset-0"></span>
+              Self-Improvement
+            </a>
+          </h3>
+          <p class="text-base font-semibold text-gray-900">Journals and note-taking</p>
+        </div>
+
+        <div class="group relative">
+          <div class="relative w-full h-80 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+            <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg" alt="Collection of four insulated travel bottles on wooden shelf." class="w-full h-full object-center object-cover">
+          </div>
+          <h3 class="mt-6 text-sm text-gray-500">
+            <a href="#">
+              <span class="absolute inset-0"></span>
+              Travel
+            </a>
+          </h3>
+          <p class="text-base font-semibold text-gray-900">Daily commute essentials</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

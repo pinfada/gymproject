@@ -1,4 +1,7 @@
 {
+  "devDependencies": {
+    "tailwindcss": "^3.2.1"
+  },
   "dependencies": {
     "el-transition": "^0.0.7"
   }

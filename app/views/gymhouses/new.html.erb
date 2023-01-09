@@ -1,0 +1,81 @@
+<%= form_with(model: @gymhouse, class: "w-full md:w-1/2 p-4 mx-auto") do |f| %>
+  <%= f.hidden_field :customer_id, value: current_user %>
+  <% if @gymhouse.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gymhouse.errors.count, "error") %> prohibited this gymhouse from being saved:</h2>
+
+      <ul>
+      <% @gymhouse.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
+      <%= f.label :name, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px" %>
+      <%= f.text_field :name, class: "form-control mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5", placeholder: "Enter the name of your gymhouse", :required => 'required' %>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
+      <%= f.label :headline, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px" %>
+      <%= f.text_field :headline, class: "form-input mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5", placeholder: "Enter the headline of your gymhouse", :required => 'required' %>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
+      <%= f.label :description, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px" %>
+      <%= f.text_area :description, class: "form-input mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5", placeholder: "Enter the description of your gymhouse", :required => 'required' %>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
+      <%= f.label :city, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px" %>
+      <%= f.text_field :city, class: "form-input mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5", placeholder: "Enter the city of your gymhouse", :required => 'required' %>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
+      <%= f.label :state, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px" %>
+      <%= f.text_field :state, class: "form-input mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5", placeholder: "Enter the state of your gymhouse", :required => 'required' %>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
+      <%= f.label :postal, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px" %>
+      <%= f.text_field :postal, class: "form-input mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5", placeholder: "Enter the postal of your gymhouse", :required => 'required' %>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
+      <%= f.label :address1, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px" %>
+      <%= f.text_field :address1, class: "form-input mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5", placeholder: "Enter the address of your gymhouse", :required => 'required' %>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
+      <%= f.label :address2, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px" %>
+      <%= f.text_field :address2, class: "form-input mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
+      <%= f.label :country, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px" %>
+      <%= f.select :country, options_for_select(['Australia', 'Canada', 'France', 'Germany', 'Japan', 'United Kingdom', 'United States']), {}, { class: "form-select mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" } %>
+    </div>
+  </div>
+
+
+  <%= f.submit "Create Form", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+<% end %>
+

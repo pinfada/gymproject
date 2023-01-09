@@ -1,0 +1,5 @@
+.navbar {
+    min-height: 80px;
+    align-items: center; /* Can be changed in the live sample */
+    background-color: #8c8c8c;
+}
