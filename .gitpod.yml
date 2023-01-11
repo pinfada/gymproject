@@ -1,10 +1,34 @@
 image:
   file: .gitpod.Dockerfile
+
+ports:
+  - name: Rails server
+    port: 3000
+    onOpen: open-preview
+  - name: PostgreSQL server
+    port: 5432
+    onOpen: ignore
+
 tasks:
-  - before: gem install rails
-    init: bundler install && psql -c "create role gitpod with createdb login password 'password1';" && yarn install --check-files && rake db:setup && rails db:migrate && rails db:seed
-    command: rails s   
+  - name: Installing Dependencies
+    init: |
+      bundle install &&
+      yarn install
+      gp sync-done installs
+    openMode: split-left
+  - name: create database & start server
+    init: gp sync-await installs
+    command: |
+      rake db:create
+      rails server -b 0.0.0.0
+    openMode: split-right
+
 vscode:
   extensions:
-    - bajdzis.vscode-database@2.2.3:nBZ1zB8XJrPu5oCtaTFB+g==
-    - ms-ossdata.vscode-postgresql@0.3.0:xzL3x0jpFvN4+uvH4nREag==
+    - rebornix.ruby
+    - bajdzis.vscode-database
+
+jetbrains:
+  rubymine:
+    prebuilds:
+      version: both
